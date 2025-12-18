@@ -1,0 +1,12 @@
+pandas
+numpy
+seaborn
+matplotlib
+scikit-learn
+xgboost
+joblib
+flask
+flask-restful
+flask-cors
+gunicorn
+-e .
