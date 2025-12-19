@@ -9,4 +9,5 @@ flask
 flask-restful
 flask-cors
 gunicorn
--e .
+catboost
+#-e .
