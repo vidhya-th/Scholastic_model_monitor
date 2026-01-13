@@ -80,7 +80,7 @@ pip install -r requirements.txt
 ```
 
 ## Project Structure
-
+```
 Scholastic_model_monitor/
 │
 ├── src/
@@ -101,7 +101,7 @@ Scholastic_model_monitor/
 ├── notebook/                      # EDA and Model experiments
 ├── requirements.txt               # Project dependencies
 └── setup.py                       # Project metadata and packaging
-
+```
 
 ## Input parameters
 
