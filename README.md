@@ -168,4 +168,7 @@ The system uses a **Stacked Regression Approach** to maximize accuracy:
 - [ ] Integration of a Flask/Streamlit web dashboard for teachers.
 - [ ] Model explainability using SHAP values.
 - [ ] Deployment to AWS/Azure using Docker containers.
+<<<<<<< HEAD
 
+=======
+>>>>>>> f1893903b8c27eba6edfbe6b1cbd19f8cb85b2e6
