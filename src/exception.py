@@ -1,4 +1,5 @@
 import sys
+import os
 
 def error_message_details(error, error_details:sys):
     """Generate a detailed error message from an exception."""
@@ -11,7 +12,7 @@ def error_message_details(error, error_details:sys):
 
 class CustomException(Exception):
     """Custom exception class that includes detailed error information."""
-    def __init__(self, error_message, error_details:sys):
+    def __init__(self, error_message, error_details: sys):
         super().__init__(error_message)
         self.error_message = error_message_details(error_message, error_details)
 

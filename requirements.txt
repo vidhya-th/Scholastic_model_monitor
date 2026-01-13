@@ -10,4 +10,5 @@ flask-restful
 flask-cors
 gunicorn
 catboost
+dill
 #-e .
