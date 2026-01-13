@@ -67,5 +67,104 @@ Python 3.8 or higher
 pip (latest version)
 Git
 ```
+### 1. Create Virtual Environment
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Project Structure
+
+Scholastic_model_monitor/
+│
+├── src/
+│   ├── components/
+│   │   ├── data_ingestion.py      # Data loading and train-test splitting
+│   │   ├── data_transformation.py # Pipeline for scaling and encoding
+│   │   └── model_trainer.py       # Model training and hyperparameter tuning
+│   │
+│   ├── pipeline/
+│   │   ├── train_pipeline.py      # Triggers the training workflow
+│   │   └── predict_pipeline.py    # Logic for real-time predictions
+│   │
+│   ├── logger.py                  # Pipeline execution tracking
+│   ├── exception.py               # Custom error handling
+│   └── utils.py                   # Helper functions (save/load objects)
+│
+├── artifacts/                     # Stores processed data and .pkl files
+├── notebook/                      # EDA and Model experiments
+├── requirements.txt               # Project dependencies
+└── setup.py                       # Project metadata and packaging
 
 
+## Input parameters
+
+| Parameter | Type | Range/Options | Description |
+| :--- | :--- | :--- | :--- |
+| Reading Score | Integer | 0-100 | Previous reading test score |
+| Writing Score | Integer | 0-100 | Previous writing test score |
+| Gender | Dropdown | Male/Female | Student gender |
+| Ethnicity | Dropdown | Group A-E | Racial/Ethnic background |
+| Parental Education | Dropdown | Degree levels | Parent's highest education |
+| Lunch | Dropdown | Standard/Reduced | Socio-economic indicator |
+| Prep Course | Dropdown | Completed/None | Test preparation status |
+
+## Model Details
+
+### Machine Learning Pipeline
+`Raw CSV` → `Data Ingestion` → `Preprocessing (Impute & Scale)` → `Model Training` → `Serialization`
+
+
+
+### 1. Data Preprocessing
+
+**Encoding Strategy**
+
+| Feature Type | Method | Example |
+| :--- | :--- | :--- |
+| **Numerical** | `StandardScaler` | $\frac{x - \mu}{\sigma}$ |
+| **Categorical** | `One-Hot Encoding` | Gender → `[1, 0]` |
+| **Missing Values** | `SimpleImputer` | Median (Num), Most Frequent (Cat) |
+
+
+
+### 2. Model Architecture
+The system uses a **Stacked Regression Approach** to maximize accuracy:
+
+* **XGBoost Regressor**: Handles non-linear relationships and high-dimensional data.
+* **CatBoost Regressor**: Optimized for categorical feature handling without manual encoding.
+* **Hyperparameter Tuning**: Utilizes `GridSearchCV` to find the best estimator parameters.
+
+## Technologies Used
+
+### Core Technologies
+* **Python 3.8+**: Primary programming language
+* **Pandas/NumPy**: Data manipulation and numerical analysis
+* **scikit-learn**: Preprocessing and pipeline management
+* **XGBoost/CatBoost**: Gradient boosting frameworks
+* **Dill/Pickle**: Model and pipeline serialization
+
+### Development Tools
+* **Git**: Version control
+* **VS Code**: IDE
+* **Jupyter Notebook**: Exploratory Data Analysis
+
+
+## Acknowledgments
+* Inspired by modern MLOps practices for production-ready code.
+* **Dataset**: Educational records for research in academic performance.
+* Special thanks to the open-source community for Scikit-Learn and Gradient Boosting libraries.
+
+
+## Future Roadmap
+
+### Version 1.1 (Q1 2026)
+- [ ] Integration of a Flask/Streamlit web dashboard for teachers.
+- [ ] Model explainability using SHAP values.
+- [ ] Deployment to AWS/Azure using Docker containers.
